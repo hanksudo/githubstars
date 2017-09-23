@@ -22,7 +22,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6.2'
+        'Programming Language :: Python :: 3.6'
     ],
     keywords='stars github graphql',
     py_modules=['githubstars'],
