@@ -10,6 +10,8 @@ Github Stars
 .. image:: https://img.shields.io/pypi/pyversions/githubstars.svg
     :target: https://pypi.python.org/pypi/githubstars
 
+.. image:: https://travis-ci.org/hanksudo/githubstars.svg?branch=master
+    :target: https://travis-ci.org/hanksudo/githubstars
 
 List repository stars and info through Github v4 GraphQL API
 
