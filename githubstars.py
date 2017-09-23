@@ -6,6 +6,8 @@ import argparse
 import json
 import os
 
+__VERSION__ = "0.0.4"
+
 try:
     from urllib.request import urlopen, Request
 except ImportError:
@@ -27,6 +29,10 @@ if GITHUB_API_TOKEN is None:
 
 
 def cli(args):
+    if args.version:
+        print(__VERSION__)
+        return
+
     first_num = args.count
     q = args.repo
 
@@ -36,6 +42,8 @@ def cli(args):
 
     if args.lang:
         q += " language:{}".format(args.lang)
+
+    q += " sort:stars"
 
     query = """
 query {
@@ -92,6 +100,7 @@ def main():
     parser.add_argument("--desc", help="show repo description", action="store_true")
     parser.add_argument("--url", help="show repo url", action="store_true")
     parser.add_argument("--verbose", help="show request detail", action="store_true")
+    parser.add_argument("--version", help="show version", action="store_true")
 
     args = parser.parse_args()
     cli(args)
