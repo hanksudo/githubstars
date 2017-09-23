@@ -11,7 +11,7 @@ Github Stars
     :target: https://pypi.python.org/pypi/githubstars
 
 
-List repository stars and info through Gituhb v4 GraphQL API
+List repository stars and info through Github v4 GraphQL API
 
 .. code-block:: bash
 
@@ -58,7 +58,7 @@ Usage
                        [--version]
                        [repo]
 
-    List repository stars and info through Gituhb v4 GraphQL API
+    List repository stars and info through Github v4 GraphQL API
 
     positional arguments:
     repo        repository name to search

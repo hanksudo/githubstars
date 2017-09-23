@@ -93,7 +93,7 @@ query {
 
 
 def main():
-    parser = argparse.ArgumentParser(prog="githubstars", description="List repository stars and info through Gituhb v4 GraphQL API")
+    parser = argparse.ArgumentParser(prog="githubstars", description="List repository stars and info through Github v4 GraphQL API")
     parser.add_argument("repo", help="repository name to search", nargs="?")
     parser.add_argument("--lang", help="search based on language", metavar="")
     parser.add_argument("--count", help="number of repositories to show", default=10, type=int, metavar="")
