@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 
-__VERSION__ = "0.0.4"
+__VERSION__ = "0.0.5"
 
 try:
     from urllib.request import urlopen, Request
