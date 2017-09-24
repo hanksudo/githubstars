@@ -63,16 +63,18 @@ Usage
     List repository stars and info through Github v4 GraphQL API
 
     positional arguments:
-    repo        repository name to search
+      repo        repository name to search
 
     optional arguments:
-    -h, --help  show this help message and exit
-    --lang      search based on language
-    --count     number of repositories to show
-    --desc      show repo description
-    --url       show repo url
-    --verbose   show request detail
-    --version   show version
+      -h, --help     show this help message and exit
+      --count        number of repositories to show
+      --desc         show repo description
+      --lang         search based on language
+      --new-created  created this week
+      --new-pushed   pushed this week
+      --url          show repo url
+      --verbose      show request detail
+      --version      show version
 
 Reference
 =========

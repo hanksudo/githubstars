@@ -6,7 +6,7 @@ import argparse
 import json
 import os
 
-__VERSION__ = "0.0.5"
+__VERSION__ = "0.0.6"
 
 try:
     from urllib.request import urlopen, Request
@@ -39,6 +39,16 @@ def cli(args):
         qs += [args.repo]
     if args.lang:
         qs += ["language:" + args.lang]
+
+    if args.new_created:
+        from datetime import datetime, timedelta
+        qs += ["created:>={:%Y-%m-%d}".format(datetime.now() + timedelta(weeks=-1))]
+    if args.new_pushed:
+        from datetime import datetime, timedelta
+        qs += ["pushed:>={:%Y-%m-%d}".format(datetime.now() + timedelta(weeks=-1))]
+    
+    if args.verbose:
+        print(qs)
     query = """
 query {
   search(type: REPOSITORY, query: "%s", first: %d) {
@@ -89,9 +99,11 @@ query {
 def main():
     parser = argparse.ArgumentParser(prog="githubstars", description="List repository stars and info through Github v4 GraphQL API")
     parser.add_argument("repo", help="repository name to search", nargs="?")
-    parser.add_argument("--lang", help="search based on language", metavar="")
     parser.add_argument("--count", help="number of repositories to show", default=10, type=int, metavar="")
     parser.add_argument("--desc", help="show repo description", action="store_true")
+    parser.add_argument("--lang", help="search based on language", metavar="")
+    parser.add_argument("--new-created", help="created this week", action="store_true")
+    parser.add_argument("--new-pushed", help="pushed this week", action="store_true")
     parser.add_argument("--url", help="show repo url", action="store_true")
     parser.add_argument("--verbose", help="show request detail", action="store_true")
     parser.add_argument("--version", help="show version", action="store_true")

@@ -7,7 +7,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='githubstars',
-    version='0.0.5',
+    version='0.0.6',
     description='List repository stars and info through Gituhb v4 GraphQL API',
     long_description=long_description,
     url='https://github.com/hanksudo/githubstars',
