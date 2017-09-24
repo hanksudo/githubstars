@@ -1,10 +1,17 @@
 language: python
-env:
-  - TOXENV=py27
-  - TOXENV=py35
-  - TOXENV=py36
-
-install: pip install tox
+matrix:
+  include:
+    - python: 2.7
+      env: TOXENV=py27
+    - python: 3.6
+      env: TOXENV=py36
+before_install:
+  - python --version
+  - uname -a
+  - lsb_release -a
+install:
+  - pip install tox
+  - tox --version
 script: tox
 notifications:
   email: false
