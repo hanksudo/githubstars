@@ -34,17 +34,11 @@ def cli(args):
         return
 
     first_num = args.count
-    q = args.repo
-
-    if q is None:
-        first_num = args.count or 10
-        q = "stars:>10000"
-
+    qs = ["sort:stars", "stars:>1"]
+    if args.repo:
+        qs += [args.repo]
     if args.lang:
-        q += " language:{}".format(args.lang)
-
-    q += " sort:stars"
-
+        qs += ["language:" + args.lang]
     query = """
 query {
   search(type: REPOSITORY, query: "%s", first: %d) {
@@ -63,7 +57,7 @@ query {
     }
   }
 }
-    """ % (q, first_num)
+    """ % (" ".join(qs), first_num)
 
     if args.verbose:
         print(query)
@@ -81,9 +75,9 @@ query {
                 node["stargazers"]["totalCount"],
                 node["name"]
             )
-            if args.url:
+            if args.url and node.get("url"):
                 result += " ({})".format(node["url"])
-            if args.desc:
+            if args.desc and node.get("description"):
                 result += "\n- {}\n".format(node["description"].encode("utf8"))
            
             print(result)
