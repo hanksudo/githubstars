@@ -9,9 +9,11 @@ import os
 __VERSION__ = "0.0.6"
 
 try:
+    # Python 3
     from urllib.request import urlopen, Request
 except ImportError:
-    from urllib2 import urlopen, Request
+    # Python 2
+    from urllib2 import urlopen, Request  # type: ignore
 
 GITHUB_API_TOKEN = os.environ.get("GITHUB_API_TOKEN")
 if GITHUB_API_TOKEN is None:
@@ -46,7 +48,7 @@ def cli(args):
     if args.new_pushed:
         from datetime import datetime, timedelta
         qs += ["pushed:>={:%Y-%m-%d}".format(datetime.now() + timedelta(weeks=-1))]
-    
+
     if args.verbose:
         print(qs)
     query = """
@@ -89,7 +91,7 @@ query {
                 result += " ({})".format(node["url"])
             if args.desc and node.get("description"):
                 result += "\n- {}\n".format(node["description"].encode("utf8"))
-           
+
             print(result)
     except Exception as e:
         print(e)
