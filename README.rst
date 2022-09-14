@@ -10,9 +10,6 @@ Github Stars
 .. image:: https://img.shields.io/pypi/pyversions/githubstars.svg
     :target: https://pypi.python.org/pypi/githubstars
 
-.. image:: https://travis-ci.org/hanksudo/githubstars.svg?branch=master
-    :target: https://travis-ci.org/hanksudo/githubstars
-
 List repository stars and info through Github v4 GraphQL API
 
 .. code-block:: bash
@@ -49,12 +46,12 @@ Installation
 
 Since Github require OAuth token to access GraphQL server, you must set personal access token first.
 
-Refer: `Authenticating with GraphQL <https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql>`_  and `Creating a personal access token for the command line <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/>`_ 
+Refer: `Authenticating with GraphQL <https://developer.github.com/v4/guides/forming-calls/#authenticating-with-graphql>`_  and `Creating a personal access token for the command line <https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/>`_
 
 Usage
 =====
 .. code-block:: bash
-    
+
     $ githubstars -h
     usage: githubstars [-h] [--lang] [--count] [--desc] [--url] [--verbose]
                        [--version]
